@@ -1,3 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background: blue;
+    background-color: lightgrey;
+}
+
+main {
+    background-color: grey;
+}
+
+.message {
+    font-size: 30px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1vmin;
+    padding: 10px;
+}
+
+div > div {
+    border: 1px solid black;
+    border: 1px solid black;
+    background-color: white;
+    width: 15vmin;
+    height: 15vmin;
+}
+
+button {
+    padding: 3px;
+    margin: 10px;
 }
