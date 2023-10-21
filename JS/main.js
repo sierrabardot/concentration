@@ -1,7 +1,7 @@
 /*---------- Constants ----------*/
 
 /*---------- Declare variables ----------*/
-let gameStatus = {
+let gameState = {
     board: [],
     score: 0,
     moves: 0,
@@ -11,7 +11,13 @@ let gameStatus = {
 /*---------- Cache HTML elements ----------*/
 
 /*---------- Initialize ----------*/
+function init() {
+    board = assignRandomSquares();
+    gameState.inPlay = true;
+    render();
+}
 
 /*---------- Event listeners ----------*/
 
 /*---------- Functions ----------*/
+function assignRandomSquares() {}
