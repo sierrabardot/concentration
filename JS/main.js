@@ -2,14 +2,11 @@
 const iconNums = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 
 /*---------- Declare variables ----------*/
-let gameState = {
-    board: [],
-    score: 0,
-    moves: 0,
-    activeSquares: [],
-    matchedSquares: [],
-    inPlay: false,
-};
+let score = 0;
+let moves = 0;
+let activeSquares = [];
+let matchedSquares = [];
+let inPlay = false;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -19,9 +16,6 @@ const squaresEl = document.querySelectorAll('div > div');
 init();
 
 function init() {
-    gameState.board = [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    ];
     assignRandomIcons();
     render();
 }
@@ -35,37 +29,60 @@ squaresEl.forEach((squareEl) => {
 /*---------- Functions ----------*/
 function boardClickHandler(squareEl) {
     // Check if game has already been started and if not, start timer
-    if (!gameState.inPlay) {
-        gameState.inPlay = true;
-        // TODO: timer funtion
+    if (!inPlay) {
+        inPlay = true;
+        // TODO: timer function
         // startTimer();
     }
 
     // If all squares have been matched, end game
-    if (gameState.matchedSquares.length === gameState.board.length) {
-        gameState.inPlay = false;
+    if (matchedSquares.length === iconNums.length) {
+        inPlay = false;
         render();
-        return;
-        // If square has already been matched, return
-    } else if (squareEl.classList.contains('match')) {
         return;
     }
 
-    // Add square to activeSquares
-    const squareNum = squareEl.className;
-    gameState.activeSquares.push(squareNum);
-    console.log(gameState.activeSquares);
+    // If square has already been matched, return
+    if (
+        squareEl.classList.contains('match') ||
+        squareEl.classList.contains('active')
+    ) {
+        return;
+    }
 
-    // Add active class to square
+    // Add square to activeSquares and add 'active' class
+    activeSquares.push(squareEl.id);
     squareEl.classList.add('active');
 
-    // TODO: If there are two items in activeSquares array, check if the IDs match
-    // checkMatch();
-
-    render();
+    // If there are two items in activeSquares array, check if the IDs match
+    if (activeSquares.length === 2) {
+        checkMatch();
+    }
 }
 
-function checkMatch() {}
+function checkMatch() {
+    if (activeSquares[0] === activeSquares[1]) {
+        moves++;
+        score++;
+        // Update squares with 'active' class to 'match'
+        const activeSquares = document.querySelectorAll('.active');
+        activeSquares.forEach((square) => {
+            square.classList.remove('active');
+            square.classList.add('match');
+        });
+        matchedSquares.push(...activeSquares);
+    } else {
+        moves++;
+        // Remove 'active' class from incorrect matches
+        const activeSquares = document.querySelectorAll('.active');
+        activeSquares.forEach((square) => {
+            square.classList.remove('active');
+        });
+    }
+
+    activeSquares = [];
+    render();
+}
 
 function assignRandomIcons() {
     let randomNums = [];
@@ -94,12 +111,5 @@ function assignRandomIcons() {
 }
 
 function render() {
-    renderBoard();
     // renderMessage();
-}
-
-function renderBoard() {
-    for (let i = 0; i < gameState.board.length; i++) {
-        const idSelector = `#square-${i}`;
-    }
 }
