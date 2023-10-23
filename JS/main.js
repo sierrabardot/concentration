@@ -1,33 +1,71 @@
 /*---------- Constants ----------*/
-const iconNums = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+const iconNums = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 
 /*---------- Declare variables ----------*/
 let gameState = {
     board: [],
     score: 0,
     moves: 0,
+    activeSquares: [],
+    matchedSquares: [],
     inPlay: false,
 };
 
 /*---------- Cache HTML elements ----------*/
-const startGameBtn = document.querySelector('.start-game');
 const resetGameBtn = document.querySelector('.reset-game');
-const boardElement = document.querySelector('.board');
+const squaresEl = document.querySelectorAll('div > div');
 
 /*---------- Initialize ----------*/
+init();
+
 function init() {
     gameState.board = [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
     assignRandomIcons();
-    gameState.inPlay = true;
+    render();
+}
+/*---------- Event listeners ----------*/
+squaresEl.forEach((squareEl) => {
+    squareEl.addEventListener('click', () => {
+        boardClickHandler(squareEl);
+    });
+});
+
+/*---------- Functions ----------*/
+function boardClickHandler(squareEl) {
+    // Check if game has already been started and if not, start timer
+    if (!gameState.inPlay) {
+        gameState.inPlay = true;
+        // TODO: timer funtion
+        // startTimer();
+    }
+
+    // If all squares have been matched, end game
+    if (gameState.matchedSquares.length === gameState.board.length) {
+        gameState.inPlay = false;
+        render();
+        return;
+        // If square has already been matched, return
+    } else if (squareEl.classList.contains('match')) {
+        return;
+    }
+
+    // Add square to activeSquares
+    const squareNum = squareEl.className;
+    gameState.activeSquares.push(squareNum);
+    console.log(gameState.activeSquares);
+
+    // Add active class to square
+    squareEl.classList.add('active');
+
+    // TODO: If there are two items in activeSquares array, check if the IDs match
+    // checkMatch();
+
     render();
 }
 
-/*---------- Event listeners ----------*/
-startGameBtn.addEventListener('click', init);
-
-/*---------- Functions ----------*/
+function checkMatch() {}
 
 function assignRandomIcons() {
     let randomNums = [];
@@ -40,20 +78,24 @@ function assignRandomIcons() {
         } while (randomNums.includes(randomNum));
         randomNums[i] = randomNum;
     }
+
+    // Each num of randomNum becomes the index of iconNumsShuffled
     let iconNumsShuffled = [];
     for (let i = 0; i < randomNums.length; i++) {
         iconNumsShuffled[i] = iconNums[randomNums[i]];
     }
+
+    // iconNums are shuffled and the ID is assigned to each square
     for (let i = 0; i < iconNums.length; i++) {
         const classSelector = `.square-${i}`;
         const square = document.querySelector(classSelector);
-        square.id = `icon-${iconNumsShuffled[i]}`;
+        square.id = `icon${iconNumsShuffled[i]}`;
     }
 }
 
 function render() {
     renderBoard();
-    renderMessage();
+    // renderMessage();
 }
 
 function renderBoard() {
