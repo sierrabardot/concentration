@@ -21,7 +21,7 @@ main {
     padding: 10px;
 }
 
-div > div {
+.board > div {
     border: 1px solid black;
     border: 1px solid black;
     background-color: white;
@@ -44,51 +44,51 @@ button {
 /* Active icon image URLS */
 #icon0.active,
 #icon0.match {
-    background-image: url('./icon-images/icon0.png');
+    /* background-image: url('./icon-images/icon0.png'); */
     background-color: plum;
 }
 #icon1.active,
 #icon1.match {
-    background-image: url('./icon-images/icon1.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon1.png'); */
+    background-color: lightgreen;
 }
 #icon2.active,
 #icon2.match {
-    background-image: url('./icon-images/icon2.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon2.png'); */
+    background-color: olivedrab;
 }
 #icon3.active,
 #icon3.match {
-    background-image: url('./icon-images/icon3.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon3.png'); */
+    background-color: blueviolet;
 }
 #icon4.active,
 #icon4.match {
-    background-image: url('./icon-images/icon4.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon4.png'); */
+    background-color: yellow;
 }
 #icon5.active,
 #icon5.match {
-    background-image: url('./icon-images/icon5.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon5.png'); */
+    background-color: orange;
 }
 #icon6.active,
 #icon6.match {
-    background-image: url('./icon-images/icon6.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon6.png'); */
+    background-color: red;
 }
 #icon7.active,
 #icon7.match {
-    background-image: url('./icon-images/icon7.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon7.png'); */
+    background-color: royalblue;
 }
 #icon8.active,
 #icon8.match {
-    background-image: url('./icon-images/icon8.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon8.png'); */
+    background-color: burlywood;
 }
 #icon9.active,
 #icon9.match {
-    background-image: url('./icon-images/icon9.png');
-    background-color: plum;
+    /* background-image: url('./icon-images/icon9.png'); */
+    background-color: salmon;
 }

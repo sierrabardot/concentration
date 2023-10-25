@@ -1,13 +1,13 @@
 On loading window:
 - initilise:
-        - randomly assign icon id(1-10) to squares
+        - randomly assign icon id (0-9) to squares
         - set score counter to 0
         - set moves to 0
 
 When player presses any square:
         - start timer
     - render:
-        - gameStatus.inPlay = true;
+        - inPlay = true;
         - render board:
             - loop through each square
             - if square has 'active' class, display icon and change colour
@@ -21,7 +21,7 @@ When player presses any square:
 When a square is clicked:
 - push square number to activeSquares
 - if square has 'match' class, return
-- otherwise, give class 'active' and run render board function
+- otherwise, give class 'active'
 - wait until another square has been clicked
 
 When another square has been clicked:
@@ -29,36 +29,32 @@ When another square has been clicked:
 - if square has 'match' class, return
 - otherwise, give class 'active'
 - moves++
-- run render function
 - check if ids match
     - if ids match, give both squares a class 'match', score++, call render function
 
 If all squares have 'match' class:
 
 - rendermessage `Congratulations! You matched the cards in ${timer} seconds and ${moves} moves!`
-- gameStatus.inPlay = false;
+- inPlay = false;
 
 If timer runs out:
 
 - rendermessage `You scored ${score} in ${moves} moves. Better luck next time!`
-- gameStatus.inPlay = false;
+- inPlay = false;
 
-When game is in play, reset button is displayed and when clicked:
+When reset button is clicked:
 - clear board
 - reset 90 second timer
 - hide reset button and display start button
-- gameStatus.inPlay = false;
+- inPlay = false;
 
 /*---------- Constants ----------*/
 
 
 /*---------- Declare variables ----------*/
-let gameStatus = {
-    board = [],
-    score = 0,
-    moves = 0,
-    inPlay = false,
-}
+let score = 0;
+let moves = 0;
+let inPlay = false;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -73,7 +69,6 @@ boardElement.addEventListener('click', boardClickHandler);
 
 /*---------- Functions ----------*/
 render() {}
-renderBoard() {if (!guess-1) {checkMatch()}}
 renderMessage() {}
 assignRandomSquares() {}
 startTimer() {}
