@@ -8,6 +8,7 @@ let timer = 90;
 let activeSquares = [];
 let matchedSquares = [];
 let inPlay = false;
+let interval;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -20,8 +21,24 @@ const secsEl = document.querySelector('.secs');
 init();
 
 function init() {
+    // Reset defaults
+    score = 0;
+    moves = 0;
+    timer = 90;
+    activeSquares = [];
+    matchedSquares = [];
+
+    // Stop timer
+    clearInterval(interval);
+
+    // Remove classes from all squares
+    squaresEl.forEach((square) => {
+        square.classList.remove('active');
+        square.classList.remove('match');
+    });
+
     assignRandomIcons();
-    render();
+    updateTimerEl();
 }
 /*---------- Event listeners ----------*/
 squaresEl.forEach((squareEl) => {
@@ -30,12 +47,18 @@ squaresEl.forEach((squareEl) => {
     });
 });
 
-/*---------- Functions ----------*/
+resetGameBtn.addEventListener('click', () => {
+    if (interval) {
+        clearInterval(interval);
+    }
+    inPlay = false;
+    init();
+});
 
+/*---------- Functions ----------*/
 function startTimer() {
     updateTimerEl();
-
-    const interval = setInterval(() => {
+    interval = setInterval(() => {
         if (timer > 0) {
             timer--;
             updateTimerEl();
@@ -98,6 +121,7 @@ function checkMatch() {
         activeSquares.forEach((square) => {
             square.classList.remove('active');
             square.classList.add('match');
+            render();
         });
         matchedSquares.push(...activeSquares);
     } else {
@@ -109,7 +133,6 @@ function checkMatch() {
         });
     }
     activeSquares = [];
-    render();
 }
 
 function assignRandomIcons() {
@@ -139,5 +162,5 @@ function assignRandomIcons() {
 }
 
 function render() {
-    // renderMessage();
+    renderMessage();
 }
