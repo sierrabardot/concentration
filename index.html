@@ -12,12 +12,16 @@
 <body>
     <header>
         <h1>Concentration</h1>
-        <p>You have 90 seconds to match as many tiles as possible.</p>
+        <p>You have 90 seconds to match as many tiles as possible. <br>
+            Start game to begin.</p>
+        </p>
     </header>
-
+    
     <main class="game-content">
+        <div class="container">
+        </div>
         <div class="message">
-            <div class="timer">00:00</div>
+            <div class="timer">Timer: <span class="mins">00</span>:<span class="secs">00</span></div>
             <div class="score">Score: 0</div>
             <div class="moves">Moves: 0</div>
         </div>
@@ -43,7 +47,7 @@
             <div class="square-18"></div>
             <div class="square-19"></div>
         </div>
-            <button class="reset-game">Reset Game</button>
+        <button class="reset-game">Reset Game</button>
     </main>
 </body>
 

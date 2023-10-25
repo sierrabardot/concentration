@@ -4,6 +4,7 @@ const iconNums = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 /*---------- Declare variables ----------*/
 let score = 0;
 let moves = 0;
+let timer = 90;
 let activeSquares = [];
 let matchedSquares = [];
 let inPlay = false;
@@ -11,6 +12,9 @@ let inPlay = false;
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
 const squaresEl = document.querySelectorAll('div > div');
+const timerEl = document.querySelector('.timer');
+const minsEl = document.querySelector('.mins');
+const secsEl = document.querySelector('.secs');
 
 /*---------- Initialize ----------*/
 init();
@@ -27,7 +31,31 @@ squaresEl.forEach((squareEl) => {
 });
 
 /*---------- Functions ----------*/
-function startTimer() {}
+
+function startTimer() {
+    updateTimerEl();
+
+    const interval = setInterval(() => {
+        if (timer > 0) {
+            timer--;
+            updateTimerEl();
+        } else {
+            clearInterval(interval);
+            inPlay = false;
+            render();
+        }
+    }, 1000);
+}
+
+function updateTimerEl() {
+    if (timer >= 60) {
+        secsEl.textContent = timer < 70 ? `0${timer - 60}` : timer - 60;
+        minsEl.textContent = '01';
+    } else if (timer < 60) {
+        secsEl.textContent = timer < 10 ? `0${timer}` : timer;
+        minsEl.textContent = '00';
+    }
+}
 
 function boardClickHandler(squareEl) {
     // Check if game has already been started and if not, start timer
@@ -80,7 +108,6 @@ function checkMatch() {
             square.classList.remove('active');
         });
     }
-
     activeSquares = [];
     render();
 }

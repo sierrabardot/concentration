@@ -14,16 +14,11 @@ header {
 }
 
 h1,
-p {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-}
-
+p,
 button {
     display: flex;
     justify-content: center;
-    padding: 5px;
+    margin: 10px;
 }
 
 main {
@@ -57,8 +52,8 @@ main {
     background-color: white;
     background-size: cover;
     background-position: center;
-    width: 20vmin;
-    height: 20vmin;
+    width: 18vmin;
+    height: 18vmin;
     padding: 5px;
 }
 
@@ -70,6 +65,7 @@ button:hover,
 button {
     padding: 3px;
     margin: 10px;
+    width: fit-content;
 }
 
 /* Active icon image URLS */
@@ -144,8 +140,8 @@ button {
         background-color: white;
         background-size: cover;
         background-position: center;
-        width: 18vmin;
-        height: 18vmin;
+        width: 150px;
+        height: 150px;
         padding: 5px;
     }
 }
