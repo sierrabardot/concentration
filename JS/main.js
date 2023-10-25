@@ -2,14 +2,14 @@
 const iconNums = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 
 /*---------- Declare variables ----------*/
-let score = 0;
-let moves = 0;
-let timer = 90;
-let activeSquares = [];
-let matchedSquares = [];
+let score;
+let moves;
+let timer;
+let activeSquares = 0;
+let matchedSquares = 0;
 let inPlay = false;
-let interval;
 let checkingMatch = false;
+let interval;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -17,6 +17,9 @@ const squaresEl = document.querySelectorAll('div > div');
 const timerEl = document.querySelector('.timer');
 const minsEl = document.querySelector('.mins');
 const secsEl = document.querySelector('.secs');
+const scoreEl = document.querySelector('.score');
+const movesEl = document.querySelector('.moves');
+const messageEl = document.querySelector('.message');
 
 /*---------- Initialize ----------*/
 init();
@@ -25,9 +28,11 @@ function init() {
     // Reset defaults
     score = 0;
     moves = 0;
-    timer = 90;
+    timer = 5;
     activeSquares = [];
     matchedSquares = [];
+    scoreEl.innerText = '0';
+    movesEl.innerText = '0';
 
     // Stop timer
     clearInterval(interval);
@@ -57,31 +62,27 @@ resetGameBtn.addEventListener('click', () => {
 });
 
 /*---------- Functions ----------*/
-function startTimer() {
-    updateTimerEl();
-    interval = setInterval(() => {
-        if (timer > 0) {
-            timer--;
-            updateTimerEl();
-        } else {
-            clearInterval(interval);
-            inPlay = false;
-            render();
+function renderMessage() {
+    if (inPlay) {
+        scoreEl.innerText = score;
+        movesEl.innerText = moves;
+    } else {
+        if (matchedSquares.length === iconNums.length) {
+            messageEl.innerText = `You matched the squares in ${moves} moves. Well done!`;
+        } else if (timer === 0) {
+            if (score <= 14) {
+                messageEl.innerText = `You matched ${score} squares. Better luck next time!`;
+            } else if (score > 14) {
+                messageEl.innerText = `You matched ${score} squares. Good job!`;
+            }
         }
-    }, 1000);
-}
-
-function updateTimerEl() {
-    if (timer >= 60) {
-        secsEl.textContent = timer < 70 ? `0${timer - 60}` : timer - 60;
-        minsEl.textContent = '01';
-    } else if (timer < 60) {
-        secsEl.textContent = timer < 10 ? `0${timer}` : timer;
-        minsEl.textContent = '00';
     }
 }
 
 function boardClickHandler(squareEl) {
+    console.log('matched squares: ', matchedSquares);
+    console.log('active squares: ', activeSquares);
+    console.log('inplay: ', inPlay);
     // Check if game has already been started and if not, start timer
     if (!inPlay) {
         inPlay = true;
@@ -94,9 +95,7 @@ function boardClickHandler(squareEl) {
 
     // If all squares have been matched, end game
     if (matchedSquares.length === iconNums.length) {
-        inPlay = false;
         render();
-        return;
     }
 
     // If square has already been matched, return
@@ -122,15 +121,15 @@ function boardClickHandler(squareEl) {
 }
 
 function checkMatch() {
+    // Increase moves and score if IDs of both squares are the same
     if (activeSquares[0] === activeSquares[1]) {
         moves++;
-        score++;
-        // Update squares with 'active' class to 'match'
+        score += 2;
+        // If match, update squares with 'active' class to 'match'
         const activeSquares = document.querySelectorAll('.active');
         activeSquares.forEach((square) => {
             square.classList.remove('active');
             square.classList.add('match');
-            render();
         });
         matchedSquares.push(...activeSquares);
     } else {
@@ -141,6 +140,7 @@ function checkMatch() {
             square.classList.remove('active');
         });
     }
+    render();
     activeSquares = [];
 }
 
@@ -170,6 +170,37 @@ function assignRandomIcons() {
     }
 }
 
+function startTimer() {
+    updateTimerEl();
+    interval = setInterval(() => {
+        if (timer > 0) {
+            timer--;
+            updateTimerEl();
+        } else {
+            clearInterval(interval);
+            inPlay = false;
+            render();
+        }
+    }, 1000);
+}
+
+function updateTimerEl() {
+    if (timer >= 60) {
+        secsEl.innerText = timer < 70 ? `0${timer - 60}` : timer - 60;
+        minsEl.innerText = '01';
+    } else if (timer < 60) {
+        secsEl.innerText = timer < 10 ? `0${timer}` : timer;
+        minsEl.innerText = '00';
+    } else if (timer === 0) {
+        inPlay = false;
+        render();
+    }
+}
+
 function render() {
-    // renderMessage();
+    if (matchedSquares.length === iconNums.length) {
+        inPlay = false;
+        clearInterval(interval);
+    }
+    renderMessage();
 }
