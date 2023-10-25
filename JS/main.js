@@ -108,7 +108,7 @@ function boardClickHandler(squareEl) {
 
     // If there are two items in activeSquares array, check if the IDs match
     if (activeSquares.length === 2) {
-        checkMatch();
+        setTimeout(checkMatch, 600);
     }
 }
 
@@ -162,5 +162,5 @@ function assignRandomIcons() {
 }
 
 function render() {
-    renderMessage();
+    // renderMessage();
 }
