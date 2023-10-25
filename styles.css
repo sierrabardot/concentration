@@ -17,12 +17,13 @@ h1,
 p {
     display: flex;
     justify-content: center;
+    margin: 10px;
 }
 
 button {
     display: flex;
     justify-content: center;
-    width: fit-content;
+    padding: 5px;
 }
 
 main {
@@ -34,19 +35,20 @@ main {
 .message {
     display: flex;
     justify-content: space-around;
-    padding: 5px 20px 5px 20px;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .message > div {
-    padding: 1vmin;
+    padding: 2px 20px 2px 20px;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1vmin;
-    padding: 10px;
+    padding: 20px 15px 15px 15px;
 }
 
 .board > div {
@@ -120,4 +122,45 @@ button {
 #icon9.match {
     /* background-image: url('./icon-images/icon9.png'); */
     background-color: salmon;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 44px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .message {
+        font-size: 22px;
+    }
+    button {
+        font-size: 16px;
+        padding: 5px;
+    }
+    .board > div {
+        border: 1px solid black;
+        border: 1px solid black;
+        background-color: white;
+        background-size: cover;
+        background-position: center;
+        width: 18vmin;
+        height: 18vmin;
+        padding: 5px;
+    }
+}
+
+@media (min-width: 960px) {
+    h1 {
+        font-size: 60px;
+    }
+    p {
+        font-size: 22px;
+    }
+    .message {
+        font-size: 22px;
+    }
+    .board {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
