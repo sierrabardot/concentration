@@ -27,12 +27,13 @@ squaresEl.forEach((squareEl) => {
 });
 
 /*---------- Functions ----------*/
+function startTimer() {}
+
 function boardClickHandler(squareEl) {
     // Check if game has already been started and if not, start timer
     if (!inPlay) {
         inPlay = true;
-        // TODO: timer function
-        // startTimer();
+        startTimer();
     }
 
     // If all squares have been matched, end game

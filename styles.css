@@ -3,15 +3,43 @@
 }
 
 body {
-    background-color: lightgrey;
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+p {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
 }
 
 main {
-    background-color: grey;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .message {
-    font-size: 30px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 20px 5px 20px;
+    font-size: 15px;
+}
+
+.message > div {
+    padding: 1vmin;
 }
 
 .board {
@@ -27,12 +55,13 @@ main {
     background-color: white;
     background-size: cover;
     background-position: center;
-    width: 15vmin;
-    height: 15vmin;
+    width: 20vmin;
+    height: 20vmin;
+    padding: 5px;
 }
 
 button:hover,
-div > div:hover {
+.board > div:hover {
     cursor: pointer;
 }
 
