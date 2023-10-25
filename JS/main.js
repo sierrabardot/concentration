@@ -9,6 +9,7 @@ let activeSquares = [];
 let matchedSquares = [];
 let inPlay = false;
 let interval;
+let checkingMatch = false;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -87,6 +88,10 @@ function boardClickHandler(squareEl) {
         startTimer();
     }
 
+    if (checkingMatch) {
+        return;
+    }
+
     // If all squares have been matched, end game
     if (matchedSquares.length === iconNums.length) {
         inPlay = false;
@@ -108,7 +113,11 @@ function boardClickHandler(squareEl) {
 
     // If there are two items in activeSquares array, check if the IDs match
     if (activeSquares.length === 2) {
-        setTimeout(checkMatch, 600);
+        checkingMatch = true;
+        setTimeout(() => {
+            checkMatch();
+            checkingMatch = false;
+        }, 600);
     }
 }
 
