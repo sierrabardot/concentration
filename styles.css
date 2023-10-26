@@ -27,10 +27,6 @@ header {
     color: rgb(254, 196, 76);
 }
 
-p {
-    font-size: 14px;
-}
-
 h1,
 h2,
 p {
@@ -42,9 +38,17 @@ h2 {
     font-family: 'Aleo', serif;
 }
 
+h1 {
+    font-size: 40px;
+}
+
 h2 {
-    margin: 0px;
-    font-size: 16px;
+    font-size: 22px;
+}
+
+p {
+    font-size: 18px;
+    margin: 10px 30px;
 }
 
 main {
@@ -104,22 +108,23 @@ button:hover,
 button {
     padding: 3px;
     margin: 10px;
+    font-size: 20px;
     width: fit-content;
 }
 
 @media (min-width: 768px) {
     h1 {
-        font-size: 44px;
-        margin-top: 45px;
+        font-size: 60px;
+        margin-top: 30px;
     }
     h2 {
-        font-size: 24px;
+        font-size: 36px;
     }
     p {
-        font-size: 20px;
+        font-size: 24px;
     }
     .container {
-        font-size: 22px;
+        font-size: 26px;
         width: 50%;
     }
     .message {
@@ -127,7 +132,7 @@ button {
         margin: 8px;
     }
     button {
-        font-size: 20px;
+        font-size: 24px;
         padding: 5px;
     }
     .board > div {
@@ -138,11 +143,11 @@ button {
 
 @media (min-width: 960px) {
     h1 {
-        margin-top: 35px;
-        font-size: 60px;
+        margin-top: 30px;
+        font-size: 64px;
     }
     p {
-        font-size: 18px;
+        font-size: 22px;
     }
     .message {
         font-size: 22px;
