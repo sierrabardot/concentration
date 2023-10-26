@@ -28,7 +28,7 @@ function init() {
     // Reset defaults
     score = 0;
     moves = 0;
-    timer = 5;
+    timer = 90;
     activeSquares = [];
     matchedSquares = [];
     scoreEl.innerText = '0';

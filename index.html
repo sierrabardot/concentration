@@ -10,15 +10,20 @@
 </head>
 
 <body>
+    <div id="overlay-modal-div" class="inactive"></div>
     <header>
         <h1>Concentration</h1>
         <p>You have 90 seconds to match as many tiles as possible. <br>
             Click any square to begin.</p>
         </p>
+        <div id="overlay" class="inactive">
+            <div class="message">You matched all the squares in 40 moves. Good job!</div>
+            <button class="play-again">Play Again</button>
+        </div>
     </header>
     
     <main class="game-content">
-        <div class="message">
+        <div class="container">
             <div class="timer">Timer: <span class="mins">00</span>:<span class="secs">00</span></div>
             <div>Score: <span class="score">0</span></div>
             <div>Moves: <span class="moves">0</span></div>
