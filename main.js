@@ -5,48 +5,41 @@ const iconNums = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 let score;
 let moves;
 let timer;
-let activeSquares;
-let matchedSquares;
+let activeSquares = [];
+let matchedSquares = [];
 let inPlay = false;
 let checkingMatch = false;
 let interval;
+let gameEnd = false;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
-const squaresEl = document.querySelectorAll('div > div');
+const playAgainBtn = document.querySelector('.play-again');
+const squaresEl = document.querySelectorAll('.board > div');
 const timerEl = document.querySelector('.timer');
 const minsEl = document.querySelector('.mins');
 const secsEl = document.querySelector('.secs');
 const scoreEl = document.querySelector('.score');
 const movesEl = document.querySelector('.moves');
 const messageEl = document.querySelector('.message');
+const overlayEl = document.querySelector('#overlay');
+const overlayModalEl = document.querySelector('#overlay-modal-div');
+const containerEl = document.querySelector('.container');
 
 /*---------- Initialize ----------*/
-init();
-
 function init() {
-    // Reset defaults
-    score = 0;
-    moves = 0;
-    timer = 90;
-    activeSquares = [];
-    matchedSquares = [];
-    scoreEl.innerText = '0';
-    movesEl.innerText = '0';
-
-    // Stop timer
-    clearInterval(interval);
-
-    // Remove classes from all squares
-    squaresEl.forEach((square) => {
-        square.classList.remove('active');
-        square.classList.remove('match');
-    });
-
+    if (overlayEl.classList.contains('active')) {
+        overlayEl.classList.toggle('active');
+        overlayModalEl.classList.toggle('active');
+    }
     assignRandomIcons();
     updateTimerEl();
 }
 /*---------- Event listeners ----------*/
+window.addEventListener('load', init);
+
+playAgainBtn.addEventListener('click', playAgain);
+
 squaresEl.forEach((squareEl) => {
     squareEl.addEventListener('click', () => {
         boardClickHandler(squareEl);
@@ -58,24 +51,76 @@ resetGameBtn.addEventListener('click', () => {
         clearInterval(interval);
     }
     inPlay = false;
-    init();
+    gameEnd = true;
+    render();
 });
 
 /*---------- Functions ----------*/
-function renderMessage() {
-    if (inPlay) {
+function playAgain() {
+    containerEl.style.display = 'flex';
+    resetGameBtn.style.display = 'inline';
+    // Reset defaults
+    gameEnd = false;
+    score = 0;
+    moves = 0;
+    timer = 90;
+    activeSquares = [];
+    matchedSquares = [];
+    scoreEl.innerText = '0';
+    movesEl.innerText = '0';
+
+    // Remove classes from all squares
+    squaresEl.forEach((square) => {
+        square.classList.remove('active');
+        square.classList.remove('match');
+    });
+
+    init();
+}
+
+function renderGameEnd() {
+    if (matchedSquares.length === iconNums.length || timer === 0) {
+        gameEnd = true;
+    }
+    if (!gameEnd) {
+        return;
+    } else {
+        inPlay = false;
+        // Stop timer
+        clearInterval(interval);
+        renderOverlay();
+    }
+}
+
+function renderOverlay() {
+    if (inPlay || !gameEnd) {
+        return;
+    } else {
+        resetGameBtn.style.display = 'none';
+        containerEl.style.display = 'none';
+        overlayEl.classList.toggle('active');
+        overlayModalEl.classList.toggle('active');
+    }
+
+    if (matchedSquares.length === iconNums.length) {
+        messageEl.innerText = `You matched the squares in ${moves} moves. Well done!`;
+    } else if (timer === 0) {
+        if (score <= 14) {
+            messageEl.innerText = `You matched ${score} squares. Better luck next time!`;
+        } else if (score > 14) {
+            messageEl.innerText = `You matched ${score} squares. Good job!`;
+        }
+    } else {
+        messageEl.innerText = `Breathe. Focus. It's just a game, after all!`;
+    }
+}
+
+function renderContainer() {
+    if (gameEnd) {
+        return;
+    } else {
         scoreEl.innerText = score;
         movesEl.innerText = moves;
-    } else {
-        if (matchedSquares.length === iconNums.length) {
-            messageEl.innerText = `You matched the squares in ${moves} moves. Well done!`;
-        } else if (timer === 0) {
-            if (score <= 14) {
-                messageEl.innerText = `You matched ${score} squares. Better luck next time!`;
-            } else if (score > 14) {
-                messageEl.innerText = `You matched ${score} squares. Good job!`;
-            }
-        }
     }
 }
 
@@ -83,19 +128,20 @@ function boardClickHandler(squareEl) {
     console.log('matched squares: ', matchedSquares);
     console.log('active squares: ', activeSquares);
     console.log('inplay: ', inPlay);
+    if (checkingMatch || gameEnd) {
+        return;
+    }
+
     // Check if game has already been started and if not, start timer
     if (!inPlay) {
         inPlay = true;
         startTimer();
     }
 
-    if (checkingMatch) {
-        return;
-    }
-
     // If all squares have been matched, end game
     if (matchedSquares.length === iconNums.length) {
         render();
+        return;
     }
 
     // If square has already been matched, return
@@ -198,9 +244,6 @@ function updateTimerEl() {
 }
 
 function render() {
-    if (matchedSquares.length === iconNums.length) {
-        inPlay = false;
-        clearInterval(interval);
-    }
-    renderMessage();
+    renderContainer();
+    renderGameEnd();
 }
