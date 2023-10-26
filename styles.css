@@ -87,9 +87,8 @@ main {
 }
 
 .board > div {
-    border: 1px solid black;
-    border: 1px solid black;
-    background-color: white;
+    border-radius: 10px;
+    background: url(./icon-images/iconbg.png);
     background-size: cover;
     background-position: center;
     width: 18vmin;
@@ -159,51 +158,41 @@ button {
 /* Active icon image URLS */
 #icon0.active,
 #icon0.match {
-    /* background-image: url('./icon-images/icon0.png'); */
-    background-color: plum;
+    background-image: url('./icon-images/icon0.png');
 }
 #icon1.active,
 #icon1.match {
-    /* background-image: url('./icon-images/icon1.png'); */
-    background-color: lightgreen;
+    background-image: url('./icon-images/icon1.png');
 }
 #icon2.active,
 #icon2.match {
-    /* background-image: url('./icon-images/icon2.png'); */
-    background-color: olivedrab;
+    background-image: url('./icon-images/icon2.png');
 }
 #icon3.active,
 #icon3.match {
-    /* background-image: url('./icon-images/icon3.png'); */
-    background-color: blueviolet;
+    background-image: url('./icon-images/icon3.png');
 }
 #icon4.active,
 #icon4.match {
-    /* background-image: url('./icon-images/icon4.png'); */
-    background-color: yellow;
+    background-image: url('./icon-images/icon4.png');
 }
 #icon5.active,
 #icon5.match {
-    /* background-image: url('./icon-images/icon5.png'); */
-    background-color: orange;
+    background-image: url('./icon-images/icon5.png');
 }
 #icon6.active,
 #icon6.match {
-    /* background-image: url('./icon-images/icon6.png'); */
-    background-color: red;
+    background-image: url('./icon-images/icon6.png');
 }
 #icon7.active,
 #icon7.match {
-    /* background-image: url('./icon-images/icon7.png'); */
-    background-color: royalblue;
+    background-image: url('./icon-images/icon7.png');
 }
 #icon8.active,
 #icon8.match {
-    /* background-image: url('./icon-images/icon8.png'); */
-    background-color: burlywood;
+    background-image: url('./icon-images/icon8.png');
 }
 #icon9.active,
 #icon9.match {
-    /* background-image: url('./icon-images/icon9.png'); */
-    background-color: salmon;
+    background-image: url('./icon-images/icon9.png');
 }
