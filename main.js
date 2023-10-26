@@ -114,14 +114,13 @@ function renderOverlay() {
         overlay = true;
         toggleOverlay();
     }
-
     if (matchedSquares.length === iconNums.length) {
-        messageEl.innerText = `You matched the squares in ${moves} moves. Well done!`;
+        messageEl.innerText = `You matched the cards in ${moves} moves. Well done!`;
     } else if (timer === 0) {
         if (score <= 14) {
-            messageEl.innerText = `You matched ${score} squares. Better luck next time!`;
+            messageEl.innerText = `You matched ${score} cards. Better luck next time!`;
         } else if (score > 14) {
-            messageEl.innerText = `You matched ${score} squares. Good job!`;
+            messageEl.innerText = `You matched ${score} cards. Good job!`;
         }
     } else {
         messageEl.innerText = `Breathe. Focus. It's just a game, after all!`;
@@ -138,9 +137,7 @@ function renderContainer() {
 }
 
 function boardClickHandler(squareEl) {
-    console.log('matched squares: ', matchedSquares);
-    console.log('active squares: ', activeSquares);
-    console.log('inplay: ', inPlay);
+    // Return if game has ended or checking match in progress
     if (checkingMatch || gameEnd) {
         return;
     }
