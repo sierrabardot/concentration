@@ -11,6 +11,7 @@ let inPlay = false;
 let checkingMatch = false;
 let interval;
 let gameEnd = false;
+let overlay = false;
 
 /*---------- Cache HTML elements ----------*/
 const resetGameBtn = document.querySelector('.reset-game');
@@ -22,19 +23,19 @@ const secsEl = document.querySelector('.secs');
 const scoreEl = document.querySelector('.score');
 const movesEl = document.querySelector('.moves');
 const messageEl = document.querySelector('.message');
-const overlayEl = document.querySelector('#overlay');
-const overlayModalEl = document.querySelector('#overlay-modal-div');
+const overlayEl = document.querySelector('.overlay');
+const overlayModalEl = document.querySelector('.overlay-modal-div');
 const containerEl = document.querySelector('.container');
 
 /*---------- Initialize ----------*/
 function init() {
-    if (overlayEl.classList.contains('active')) {
-        overlayEl.classList.toggle('active');
-        overlayModalEl.classList.toggle('active');
-    }
+    resetDefaults();
+    overlay = false;
+    toggleOverlay();
     assignRandomIcons();
     updateTimerEl();
 }
+
 /*---------- Event listeners ----------*/
 window.addEventListener('load', init);
 
@@ -56,10 +57,7 @@ resetGameBtn.addEventListener('click', () => {
 });
 
 /*---------- Functions ----------*/
-function playAgain() {
-    containerEl.style.display = 'flex';
-    resetGameBtn.style.display = 'inline';
-    // Reset defaults
+function resetDefaults() {
     gameEnd = false;
     score = 0;
     moves = 0;
@@ -74,7 +72,10 @@ function playAgain() {
         square.classList.remove('active');
         square.classList.remove('match');
     });
+}
 
+function playAgain() {
+    resetDefaults();
     init();
 }
 
@@ -92,14 +93,26 @@ function renderGameEnd() {
     }
 }
 
+function toggleOverlay() {
+    if (overlay === false) {
+        overlayEl.style.display = 'none';
+        overlayModalEl.style.display = 'none';
+        playAgainBtn.style.display = 'none';
+        resetGameBtn.style.display = 'inline';
+    } else {
+        resetGameBtn.style.display = 'none';
+        overlayEl.style.display = 'flex';
+        overlayModalEl.style.display = 'block';
+        playAgainBtn.style.display = 'inline';
+    }
+}
+
 function renderOverlay() {
     if (inPlay || !gameEnd) {
         return;
     } else {
-        resetGameBtn.style.display = 'none';
-        containerEl.style.display = 'none';
-        overlayEl.classList.toggle('active');
-        overlayModalEl.classList.toggle('active');
+        overlay = true;
+        toggleOverlay();
     }
 
     if (matchedSquares.length === iconNums.length) {
