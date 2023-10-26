@@ -61,7 +61,7 @@ function resetDefaults() {
     gameEnd = false;
     score = 0;
     moves = 0;
-    timer = 90;
+    timer = 60;
     activeSquares = [];
     matchedSquares = [];
     scoreEl.innerText = '0';
@@ -115,7 +115,7 @@ function renderOverlay() {
         toggleOverlay();
     }
     if (matchedSquares.length === iconNums.length) {
-        messageEl.innerText = `You matched the cards in ${moves} moves. Well done!`;
+        messageEl.innerText = `You matched all the cards in ${moves} moves. Well done!`;
     } else if (timer === 0) {
         if (score <= 14) {
             messageEl.innerText = `You matched ${score} cards. Better luck next time!`;
