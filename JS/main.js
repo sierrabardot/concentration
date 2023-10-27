@@ -247,11 +247,15 @@ function startTimer() {
 
 function updateTimerEl() {
     if (timer >= 60) {
+        timerEl.style.color = 'rgb(254, 196, 76)';
         secsEl.innerText = timer < 70 ? `0${timer - 60}` : timer - 60;
         minsEl.innerText = '01';
     } else if (timer < 60) {
         secsEl.innerText = timer < 10 ? `0${timer}` : timer;
         minsEl.innerText = '00';
+        if (timer <= 15) {
+            timerEl.style.color = 'rgb(236, 106, 69)';
+        }
     } else if (timer === 0) {
         inPlay = false;
         render();
