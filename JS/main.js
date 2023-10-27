@@ -26,6 +26,7 @@ const messageEl = document.querySelector('.message');
 const overlayEl = document.querySelector('.overlay');
 const overlayModalEl = document.querySelector('.overlay-modal-div');
 const containerEl = document.querySelector('.container');
+const paraEl = document.querySelector('p');
 
 /*---------- Initialize ----------*/
 function init() {
@@ -87,6 +88,8 @@ function renderGameEnd() {
         return;
     } else {
         inPlay = false;
+        paraEl.style.display = 'block';
+        containerEl.style.display = 'none';
         // Stop timer
         clearInterval(interval);
         renderOverlay();
@@ -145,6 +148,8 @@ function boardClickHandler(squareEl) {
     // Check if game has already been started and if not, start timer
     if (!inPlay) {
         inPlay = true;
+        paraEl.style.display = 'none';
+        containerEl.style.display = 'flex';
         startTimer();
     }
 

@@ -6,9 +6,12 @@ body {
     text-align: center;
     max-width: 960px;
     margin: 0 auto;
-    background-color: rgb(85, 107, 85);
     font-family: 'Hind Vadodara', sans-serif;
     color: white;
+    background: url(./Assets/background.png), rgb(85, 107, 85);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;
 }
 
 header {
@@ -18,44 +21,52 @@ header {
 }
 
 .container {
-    display: flex;
+    display: none;
     justify-content: space-between;
-    width: 293px;
-    padding: 5px;
+    width: 100%;
+    height: 70px;
+    align-items: center;
     border-radius: 10px;
+    padding: 10px;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(254, 196, 76);
+}
+
+.game-stats {
+    display: flex;
+    flex-flow: column wrap;
 }
 
 .start-instructions {
     color: rgb(254, 196, 76);
 }
 
-h1,
-h2 {
-    font-family: 'Aleo', serif;
-    margin: 0;
-}
-
 h1 {
+    font-family: 'Fira Sans', sans-serif;
     font-size: 2.5rem;
 }
 
-h2 {
-    display: none;
-    font-size: 1.25rem;
-}
-
 p {
+    display: block;
     font-size: 0.9rem;
     padding: 0 75px;
-    line-height: 1.25rem;
+    margin: 0px;
+    line-height: 1.5rem;
+    height: 70px;
 }
 
 main {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
-    margin: 20px;
+    margin: 0 20px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 /* Referened after having issues with the overlay position https://stackoverflow.com/questions/3250790/making-a-div-that-covers-the-entire-page */
@@ -98,19 +109,20 @@ main {
 
 .board {
     display: grid;
-    margin: 0 50px;
+    margin: 15px;
     grid-template-columns: repeat(4, 1fr);
     gap: 1vmin;
-    padding: 10px 15px 15px 15px;
     perspective: 1500px;
+    width: 100%;
 }
 
 .board > div {
     border-radius: 10px;
-    background: url(./icon-images/iconbg.png);
+    background: url(./Assets/iconbg.png);
     background-size: cover;
     background-position: center;
-    width: 22vmin;
+    justify-self: center;
+    width: 100%;
     height: 22vmin;
     transition: transform 0.5s;
     transform-style: preserve-3d;
@@ -132,86 +144,75 @@ button {
     margin: 10px;
     font-size: 14px;
     width: fit-content;
+    background-color: rgb(254, 196, 76);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 @media (min-width: 768px) {
     h1 {
         font-size: 4rem;
     }
-    h2 {
-        display: block;
-        font-size: 2rem;
-    }
     p {
         font-size: 1rem;
     }
     .container {
-        width: 50%;
         font-size: 1.5rem;
     }
     button {
         font-size: 1rem;
     }
-    .board > div {
-        width: 20vmin;
-        height: 20vmin;
-    }
 }
 
 @media (min-width: 960px) {
-    .message {
+    .message,
+    p {
         font-size: 1.5rem;
-    }
-    .board {
-        grid-template-columns: repeat(5, 1fr);
     }
     button {
         font-size: 1.25rem;
-    }
-    .board > div {
-        width: 18vmin;
-        height: 18vmin;
     }
 }
 
 /* Active icon image URLS */
 #icon0.active,
 #icon0.match {
-    background-image: url('./icon-images/icon0.png');
+    background-image: url('./Assets/icon0.png');
 }
 #icon1.active,
 #icon1.match {
-    background-image: url('./icon-images/icon1.png');
+    background-image: url('./Assets/icon1.png');
 }
 #icon2.active,
 #icon2.match {
-    background-image: url('./icon-images/icon2.png');
+    background-image: url('./Assets/icon2.png');
 }
 #icon3.active,
 #icon3.match {
-    background-image: url('./icon-images/icon3.png');
+    background-image: url('./Assets/icon3.png');
 }
 #icon4.active,
 #icon4.match {
-    background-image: url('./icon-images/icon4.png');
+    background-image: url('./Assets/icon4.png');
 }
 #icon5.active,
 #icon5.match {
-    background-image: url('./icon-images/icon5.png');
+    background-image: url('./Assets/icon5.png');
 }
 #icon6.active,
 #icon6.match {
-    background-image: url('./icon-images/icon6.png');
+    background-image: url('./Assets/icon6.png');
 }
 #icon7.active,
 #icon7.match {
-    background-image: url('./icon-images/icon7.png');
+    background-image: url('./Assets/icon7.png');
 }
 #icon8.active,
 #icon8.match {
-    background-image: url('./icon-images/icon8.png');
+    background-image: url('./Assets/icon8.png');
 }
 #icon9.active,
 #icon9.match {
-    background-image: url('./icon-images/icon9.png');
+    background-image: url('./Assets/icon9.png');
 }
