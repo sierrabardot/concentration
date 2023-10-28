@@ -206,12 +206,12 @@ function checkMatch() {
 
 function assignRandomIcons() {
     let randomNums = [];
-    // Populate randomNums with nums from 1-19, ensuring that each number is repeated only once
+    // Populate randomNums with nums from 0-19, ensuring that each number is repeated only once
     // Do while loop idea from https://stackoverflow.com/questions/67944250/check-if-value-exists-in-an-array-and-if-not-generate-a-new-random-number
     for (let i = 0; i < iconNums.length; i++) {
         let randomNum;
         do {
-            randomNum = Math.floor(Math.random() * 20);
+            randomNum = Math.floor(Math.random() * iconNums.length);
         } while (randomNums.includes(randomNum));
         randomNums[i] = randomNum;
     }
