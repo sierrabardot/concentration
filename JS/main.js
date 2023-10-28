@@ -187,6 +187,7 @@ function checkMatch() {
         score += 2;
         // If match, update squares with 'active' class to 'match'
         const activeSquares = document.querySelectorAll('.active');
+        //https:github.com/sierrabardot/concentration
         activeSquares.forEach((square) => {
             square.classList.remove('active');
             square.classList.add('match');
