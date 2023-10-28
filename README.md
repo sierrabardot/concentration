@@ -8,8 +8,6 @@ Memory Game is a take on the classic game of concentration, designed to provide 
 
 The primary purpose of this game is to test and improve your memory by matching pairs of cards.
 
-<!-- wireframing & screenshots -->
-
 ### Instructions
 
 1. **Breathe, relax, and have fun!**
@@ -19,7 +17,13 @@ The primary purpose of this game is to test and improve your memory by matching 
 
 ## 🤔 Planning & Problem Solving
 
-Throughout the development, I encountered several challenges. Here's how I approached them:
+My first step towards creating Memory Game was creating a wireframe of the main game screen:
+
+<img src="./Screenshots/wireframe.png" width=400px>
+
+To ensure game fuctionality prior to styling, I used CSS to colour each card pair:
+
+<img src="./Screenshots/game-development.png" width=400px>
 
 -   **Ensuring Game Functionality:** I strategically handled game logic to ensure that cards were shuffled and matched correctly, and that the game ends when all pairs are found or the timer runs out.
 
@@ -27,7 +31,7 @@ Throughout the development, I encountered several challenges. Here's how I appro
 
 -   **Resetting Default Game State Values:** I initially struggled to reset the game state variables to their original state in order start a new game. After creating a _GIANT_ init() function, I rethought my approach and created a specific function to reset the values each time a new game initiated.
 
-## 🚀 Technologies Used
+## 💾 Technologies Used
 
 -   HTML
 -   CSS
@@ -46,7 +50,7 @@ Throughout the development, I encountered several challenges. Here's how I appro
 -   **Spend More Time on Responsive Design:** I would focus on making the game more responsive and user-friendly on different devices.
 -   **Good Pseudocode is Crucial:** I focused too much on what I want the game to do, but didn't think about _how_ I want it to work.
 
-## 💯 Future Features
+## 🚀 Future Features
 
 A few features I plan on adding in the near future:
 

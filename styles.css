@@ -11,13 +11,13 @@ body {
     background: url(./Assets/background.png), rgb(85, 107, 85);
     background-repeat: no-repeat;
     background-size: 100%;
-    background-position: top;
+    background-position: bottom;
 }
 
 header {
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
+    margin: 0 20px 10px 20px;
 }
 
 .container {
@@ -65,7 +65,7 @@ main {
     align-items: center;
     flex-direction: column;
     border-radius: 10px;
-    margin: 0 20px;
+    margin: 0 30px;
 }
 
 /* Referened after having issues with the overlay position https://stackoverflow.com/questions/3250790/making-a-div-that-covers-the-entire-page */
@@ -108,11 +108,9 @@ main {
 
 .board {
     display: grid;
-    margin: 15px;
     grid-template-columns: repeat(4, 1fr);
     gap: 1vmin;
     perspective: 1500px;
-    width: 100%;
 }
 
 .board > div {
@@ -121,7 +119,7 @@ main {
     background-size: cover;
     background-position: center;
     justify-self: center;
-    width: 100%;
+    width: 22vmin;
     height: 22vmin;
     transition: transform 0.5s;
     transform-style: preserve-3d;
@@ -173,6 +171,13 @@ button {
     }
     button {
         font-size: 1.25rem;
+    }
+    .board {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .board > div {
+        width: 18vmin;
+        height: 18vmin;
     }
 }
 
