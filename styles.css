@@ -17,7 +17,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
-    margin: 20px 20px 0 20px;
+    margin: 0 20px;
 }
 
 .container {
@@ -66,7 +66,6 @@ main {
     flex-direction: column;
     border-radius: 10px;
     margin: 0 20px;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 /* Referened after having issues with the overlay position https://stackoverflow.com/questions/3250790/making-a-div-that-covers-the-entire-page */
@@ -138,6 +137,7 @@ button:hover,
     cursor: pointer;
 }
 
+/* Referened https://stackoverflow.com/questions/5438567/css-submit-button-weird-rendering-on-ipad-iphone */
 button {
     padding: 5px;
     border-radius: 10px;
@@ -145,6 +145,7 @@ button {
     font-size: 14px;
     width: fit-content;
     background-color: rgb(254, 196, 76);
+    color: black;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -155,7 +156,7 @@ button {
         font-size: 4rem;
     }
     p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
     .container {
         font-size: 1.5rem;

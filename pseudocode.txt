@@ -34,7 +34,7 @@ When another square has been clicked:
 
 If all squares have 'match' class:
 
-- rendermessage `Congratulations! You matched the cards in ${timer} seconds and ${moves} moves!`
+- rendermessage `Congratulations! You matched the cards in ${moves} moves!`
 - inPlay = false;
 
 If timer runs out:

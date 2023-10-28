@@ -1,44 +1,62 @@
-# Concentration
+# Memory Game: A walk through nature
 
-A game of memory and focus
+Memory Game is a take on the classic game of concentration, designed to provide an engaging and fun experience while enhancing your memory skills.
 
-☐ Screenshot(s): Images of your actual game.
+## 👩‍💻 [Click here](https://sierrabardot.github.io/concentration/) to play Memory Game!
 
-☐ Technologies Used: List of the technologies used, e.g., JavaScript, HTML, CSS...
+## 🏃‍♀️ Getting Started
 
-☐ Getting Started: In this section include the link to your deployed game and any instructions you deem important.
+The primary purpose of this game is to test and improve your memory by matching pairs of cards.
 
-☐ Next Steps: Planned future enhancements (icebox items).
+<!-- wireframing & screenshots -->
 
-<!-- ### Code examples
+### Instructions
 
-```js
-const bar = 'foo';
-```
+1. **Breathe, relax, and have fun!**
+2. Click on a card to reveal its image.
+3. Click on a second card, and find its matching pair.
+4. You have 60 seconds to try and match all the cards.
 
-```css
-* {
-    box-sizing: border-box;
-}
-```
+## 🤔 Planning & Problem Solving
 
-inline code example `git add .` .
+Throughout the development, I encountered several challenges. Here's how I approached them:
 
-### Lists
+-   **Ensuring Game Functionality:** I strategically handled game logic to ensure that cards were shuffled and matched correctly, and that the game ends when all pairs are found or the timer runs out.
 
--   item 1
--   item 2
--   item 3
+-   **Implementing an Overlay:** I used Chrome DevTools to inspect how websites implement overlays. This, along with some reliable sources (i.e. SheCodes and Stack Overflow) allowed me to create my own version and successfully render the overlay when the game ends.
 
-1. num 1
-2. num 2
-3. num 3
+-   **Resetting Default Game State Values:** I initially struggled to reset the game state variables to their original state in order start a new game. After creating a _GIANT_ init() function, I rethought my approach and created a specific function to reset the values each time a new game initiated.
 
-### Links
+## 🚀 Technologies Used
 
--   [Google](https://google.com)
--   [styles.css](./styles.css)
+-   HTML
+-   CSS
+-   JavaScript
+-   **Animations:** CSS transitions to 'flip' cards
 
-### Embedded images
+## 💩 Bugs to Fix
 
-![](https://placedog.net/500) -->
+-   **Card Icons Delay:** After pushing to GitHub, there is a delay displaying icons when first playing the game
+-   **Responsive Design:** Ensuring the game works well on various screen sizes and devices.
+
+## 🥲 Lessons Learned
+
+🎵 _If I could turn back time_ 🎵
+
+-   **Spend More Time on Responsive Design:** I would focus on making the game more responsive and user-friendly on different devices.
+-   **Good Pseudocode is Crucial:** I focused too much on what I want the game to do, but didn't think about _how_ I want it to work.
+
+## 💯 Future Features
+
+A few features I plan on adding in the near future:
+
+-   **Smooth Trantitions for Overlay** Take advantage of CSS transitions to smoothly render the overlay when the game ends
+-   **Levels:** Create different levels and/or difficulties
+-   **Theme Selection:** Allow users to choose from a range of themes for the game, providing different options for the background, colours, and card images
+
+## 🙏 Acknowledgements
+
+-   The team at [General Assembly](https://generalassemb.ly/) for their support! 💪🏼
+-   [Daly Cova](https://www.linkedin.com/in/dalycova/?originalSubdomain=au), for creating the card images and background 🥰
+
+### Enjoy playing Memory Game: A walk through nature 🌿🌼🌳

@@ -76,7 +76,6 @@ function resetDefaults() {
 }
 
 function playAgain() {
-    resetDefaults();
     init();
 }
 
