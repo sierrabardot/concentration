@@ -15,6 +15,24 @@ The primary purpose of this game is to test and improve your memory by matching 
 3. Click on a second card, and find its matching pair.
 4. You have 60 seconds to try and match all the cards.
 
+## 📸 Screenshots
+
+Main game screen:
+
+<img src="./Screenshots/game-screen-1.png" width=400px>
+
+Game screen during play:
+
+<img src="./Screenshots/game-screen-2.png" width=400px>
+
+Overlay when game ends:
+
+<img src="./Screenshots/game-screen-3.png" width=400px>
+
+Memory Game on mobile:
+
+<img src="./Screenshots/game-screen-4.jpeg" width=400px>
+
 ## 🤔 Planning & Problem Solving
 
 My first step towards creating Memory Game was creating a wireframe of the main game screen:
@@ -23,7 +41,7 @@ My first step towards creating Memory Game was creating a wireframe of the main 
 
 To ensure game fuctionality prior to styling, I used CSS to colour each card pair:
 
-<img src="./Screenshots/game-development.png" width=400px>
+<img src="./Screenshots/game-dev-1.png" width=400px>
 
 -   **Ensuring Game Functionality:** I strategically handled game logic to ensure that cards were shuffled and matched correctly, and that the game ends when all pairs are found or the timer runs out.
 
@@ -42,6 +60,7 @@ To ensure game fuctionality prior to styling, I used CSS to colour each card pai
 
 -   **Card Icons Delay:** After pushing to GitHub, there is a delay displaying icons when first playing the game
 -   **Responsive Design:** Ensuring the game works well on various screen sizes and devices.
+-   **Background Image:** Tether background image to the bottom of the page rather than the bottom of the content
 
 ## 🥲 Lessons Learned
 
